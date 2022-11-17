@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fill-form" class="container">
+        <h1>Student Portal Form</h1>
+        <form action="/confirmregister" id="photo-form" method="post" >
+            <div class="form-group">
+                <h3 style="background-color: #13121369;">Personal information</h3>
+                <div>
+                    <div class="col-md-6">
+                        <label for="lname">LastName:</label>
+                        <input type="text" class="form-control" name="lname" id="lname" placeholder="Type in the lastname"  required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Type in the email" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-md-6">
+                        <label for="course">Course</label>
+                        <input type="text" class="form-control" name="course" id="course" placeholder="Pick your date of birth" required>
+                    </div>
+                    <div class="col-md-6">
+                     Male<input type="radio" name="gender"  id="gender" value="male" class="form-control" >Female<input type="radio" id="gender" name="gender" value="female" class="form-control">
+                    </div>
+                </div>
+                    <button id="submit" type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+        </form>
+    </div>
+    </div>
+    
+    </div>
+</body>
+</html>

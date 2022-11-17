@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://checkout.seerbitapi.com/api/v2/seerbit.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <form action="">
+        <label for="amount">Amount <input id="amount" type="text" required></label>
+        <button id="btn" onclick="paywithSeerbit()">Submit</button>
+    </form>
+
+    <h4 style="background-color: lightblue;">Info! all students record table</h4>
+<div class="col-md-10 main">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>I.D</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>E-Mail</th>
+                <th>Status</th>
+                <th>Amount</th>
+                <th>Course</th>
+                <th>Amount Paid</th>
+                <th>Others</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in words %}
+            <tr>
+                <td>{{ loop.index}}</td>
+                <td>{{ word['id'] }}</td>
+                <td class="word-name">{{ word['studentname'] }} </td>
+                <td class="word-gender">{{ word['gender'] }}</td>
+                <td class="word-jambscore">{{ word['email'] }}</td>
+                <td class="word-admissionstatus">{{ word['status'] }}</td>
+                <td class="word-admissionstatus">{{ word['amount'] }}</td>
+                <td class="word-admissionstatus">{{ word['course'] }}</td>
+                <td class="word-admissionstatus">{{ word['amountpaid'] }}</td>
+                <td class="updex"><a class="btn btn-primary btn-md" href="{{ url_for('payment', id=word.id) }}">Full view...</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">The Portal has no student at the moment,please try again later</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+  
+    <script src="./script.js"></script>
+</body>
+</html>
