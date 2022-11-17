@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\KAISER\\Desktop\\Projects\\paymentGateway\\paymentGateway.csproj": {}
+    "C:\\Users\\KAISER\\Desktop\\Projects\\GithubProjects\\Dev-Seerbit\\paymentGateway\\paymentGateway.csproj": {}
   },
   "projects": {
-    "C:\\Users\\KAISER\\Desktop\\Projects\\paymentGateway\\paymentGateway.csproj": {
+    "C:\\Users\\KAISER\\Desktop\\Projects\\GithubProjects\\Dev-Seerbit\\paymentGateway\\paymentGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KAISER\\Desktop\\Projects\\paymentGateway\\paymentGateway.csproj",
+        "projectUniqueName": "C:\\Users\\KAISER\\Desktop\\Projects\\GithubProjects\\Dev-Seerbit\\paymentGateway\\paymentGateway.csproj",
         "projectName": "paymentGateway",
-        "projectPath": "C:\\Users\\KAISER\\Desktop\\Projects\\paymentGateway\\paymentGateway.csproj",
+        "projectPath": "C:\\Users\\KAISER\\Desktop\\Projects\\GithubProjects\\Dev-Seerbit\\paymentGateway\\paymentGateway.csproj",
         "packagesPath": "C:\\Users\\KAISER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KAISER\\Desktop\\Projects\\paymentGateway\\obj\\",
+        "outputPath": "C:\\Users\\KAISER\\Desktop\\Projects\\GithubProjects\\Dev-Seerbit\\paymentGateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\KAISER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
