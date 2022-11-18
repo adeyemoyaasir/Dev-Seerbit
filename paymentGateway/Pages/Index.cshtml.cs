@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using paymentGateway.Models;
 using paymentGateway.Models.PaymentLink;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+using Microsoft.Extensions.Primitives;
+using Microsoft.AspNetCore.Components.Routing;
 
 namespace paymentGateway.Pages;
 
@@ -12,6 +15,7 @@ public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
     private string token;
+    public string PublicKey { get; set; } = "SBTESTPUBK_bEcvQMD2fF0rTVV68cuVpjfsTf113Ho4";
     public string Hash { get; set; }
 
     public string Token { get => token; set => token = value; }
@@ -56,33 +60,28 @@ public class IndexModel : PageModel
 
         Token = responseData.data.EncryptedSecKey.encryptedKey;
 
-        var hashTask = CreatePaymentLink();
+        var payment = PaymentAsync();
     }
 
-    async Task CreatePaymentLink()
+    async Task PaymentAsync()
     {
         var url = "https://seerbitapi.com/api/v2/payments";
 
-        var paymentLink = new Models.PaymentLink.Root();
+        var paymentDoc = new Dictionary<string, string>();
 
-        paymentLink.amount = "500";
-        paymentLink.callbackUrl = "https://google.com";
-        paymentLink.currency = "NGN";
-        paymentLink.country = "NG";
-        paymentLink.email = "eze@gmail.com";
-        paymentLink.productId = "14093";
-        paymentLink.paymentReference = "Y191090233047WZ73QN";
-        paymentLink.productDescription = "leg badge";
-        paymentLink.publicKey = "SBTESTPUBK_bEcvQMD2fF0rTVV68cuVpjfsTf113Ho4";
-        paymentLink.hash = $"6a43b447eb69d2da3545f6d3fb6b66511679b6cd10ed59ead74f70c3251c3bac30b3429f6e6555a4b3c508332a76c5343d1fe85c276ee285a33dae6ca03769495e6cabd95ae98236a1a25bdfc9183d5b";
-        paymentLink.hashType = "sha256";
+        paymentDoc.Add("publicKey", PublicKey);
+        paymentDoc.Add("amount", "500");
+        paymentDoc.Add("email", "eze@gmail.com");
+        paymentDoc.Add("country", "NG");
+        paymentDoc.Add("currency", "NGN");
+        paymentDoc.Add("paymentReference", $"{PaymentRef()}");
 
-        var paymentJson = System.Text.Json.JsonSerializer.Serialize(paymentLink);
+        var jsonPayment = System.Text.Json.JsonSerializer.Serialize(paymentDoc);
 
-        var data = new StringContent(paymentJson, Encoding.UTF8, "application/json");
+        var data = new StringContent(jsonPayment, Encoding.UTF8, "application/json");
 
         var client = new HttpClient();
-        
+
         client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Token}");
 
         var response = await client.PostAsync(url, data);
@@ -91,8 +90,28 @@ public class IndexModel : PageModel
 
         var message = JsonConvert.DeserializeObject<PaymentLinkResponse.Root>(result);
 
-        System.Console.WriteLine(message.data.payments.redirectLink);
+        Console.WriteLine(message.data.payments.redirectLink);
 
-        System.Console.WriteLine(result);
+
+    }
+
+    private string PaymentRef()
+    {
+        Random ran = new Random();
+
+        String b = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+        int length = 6;
+
+        String random = "";
+
+        for (int i = 0; i < length; i++)
+        {
+            int a = ran.Next(b.Length); //string.Lenght gets the size of string
+            random = random + b.ElementAt(a);
+        }
+
+
+        return random;
     }
 }
