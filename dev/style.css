@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+:root {
+    --cta: linear-gradient(
+        to right, 
+        rgb(77, 4, 4), 
+        rgb(192, 10, 19));
+    --glass: linear-gradient(
+        to right bottom, 
+        rgba(255, 255, 255, 0.7), 
+        rgba(255, 255, 255, 0.3));
+    --glass-circle: linear-gradient(
+        to right bottom, 
+        rgba(150, 54, 54, 0.9), 
+        rgba(255, 255, 255, 0.3));
+    --dark: rgb(77, 4, 4);
+    --light: rgb(192, 10, 19);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: popipins 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    width: 130px;
+}
+
+.hide-mobile {
+    display: none;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    padding: 0.7em 0.8em;
+}
+
+.menu {
+    width: 25px;
+    margin-top: 45%;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: block;
+}
+
+.container .header-bg-img {
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;
+    opacity: 0.31;
+}
+.container .overlay {
+    width: 100%;
+    height: 100vh;
+    background: burlywood;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+.header-content {
+    position: absolute;
+    top: 10em;
+}
+
+header .logo {
+    color:rgb(77, 4, 4);
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.header-content h1 {
+    font-weight: bold;
+    font-size: 2em;
+    padding: 0.2em 1em;
+    text-align: center;
+    color: black;
+    background: var(--glass);
+    border-radius: 0.5em;
+    margin: 0 0.3em;
+}
+
+.header-content p {
+    padding: 0 2.5em;
+    line-height: 1.5;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 4em auto -2em;
+}
+
+.header-content a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    background: var(--cta);
+    padding: 0.5em 3em;
+    border-radius: 1em;
+}
+
+nav ul {
+    position: fixed;
+    width: 60%;
+    top: 0;
+    right: 0;
+    text-align: left;
+    background: rgb(36,41,44);
+    height: 100%;
+    z-index: 7;
+    padding-top: 3em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 1em 2em;
+    background-color: rgb(49, 55, 59);
+}
+
+nav ul li a:hover {
+    background-color: rgb(65, 73, 78);
+}
+
+.exit-btn {
+    margin-bottom: 1em;
+    margin-top: -1.3em;
+    text-align: right;
+    padding: 0 1.4em;
+}
+
+.exit-btn img {
+    width: 15px;
+    cursor: pointer;
+}
+
+
+
+.login {
+    width: 100%;
+    height: auto;
+}
+
+.login form {
+    padding: 5em 4em;
+    background: var(--glass);
+    display: block;
+    background-color: burlywood;
+} 
+
+.login form input {
+    width: 20em;
+    height: 2.5em;
+    margin: 0.3em auto;
+    border-radius: 0.5em;
+    border: 1px solid white;
+}
+
+.login form input[type="text"], input[type="password"] {
+    padding-left: 0.8em;
+}
+
+.login form input[type="submit"] {
+    width: 6em;
+    background: var(--cta);
+    color: white;
+    font-weight: bold;
+}
+
+.login form input::placeholder {
+    color: var(--dark);
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 650px)  {
+    .header-content h1 {
+        margin: 0 2em;
+        margin-bottom: -1em;
+    }
+
+    .login {
+        background-color: burlywood;
+    }
+}
+
+@media only screen and (min-width: 875px)  {
+    .header-content h1 {
+        margin-top: 0;
+        margin-left: 4em;
+        margin-right: 4em;
+        margin-bottom: -1em;
+        font-size: 2.3em;
+    }
+
+    .header-content p {
+        margin: 4em 6em -2em;
+        font-size: 1.3em;
+        line-height: 1;
+    }
+}
+
+@media only screen and (min-width: 1024px)  {
+    .header-bg-img {
+      height 100vh;
+    }
+    /* .container {
+        display: flex;
+    } */
+    .login {
+        width: 50%;
+    }
+    .header-content {
+        width: 50%;
+        position: absolute;
+
+    }
+    header {
+        width: 100%;
+    }
+
+    .login {
+        position: absolute;
+        top: 12em;
+        right: 0;
+        width: 41%;
+    }
+    form {
+        width: 20em;
+        border-radius: 2em;
+    }
+
+    .container .overlay {
+        height: 104vh;
+    }
+    .container h1 {
+        width: 10em;
+        font-size: 3em;
+        margin-left: 0.4em;
+        padding: 1.2em 0.2em;
+    }
+
+    .container p {
+        width: 20em;
+        margin-left: 0.4em;
+        text-align: left;
+    }
+    .show-desktop {
+        display: block;
+        margin: 0 auto 13% auto;
+    }
+
+    .hide-desktop {
+        display: none;
+    }
+
+    nav {
+        margin-right: 7em;
+    }
+    nav ul {
+        position: inherit;
+        width: auto;
+        background: none;
+        height: auto;
+        display: flex;
+        padding-top: 0;
+    }
+
+    nav ul li {
+        float: left;
+    }
+
+    nav ul li a {
+        color: black;
+        background-color: inherit;
+        text-align: right;
+        padding: 1em 2em;
+    }
+
+    nav ul li a:hover {
+        background-color: inherit;
+    }
+
+    .scroll {
+        width: 30px;
+        animation: move 1s infinite alternate;
+    }
+}
